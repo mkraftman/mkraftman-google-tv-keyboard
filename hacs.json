@@ -1,0 +1,6 @@
+{
+  "name": "Mkraftman Google TV Keyboard",
+  "render_readme": true,
+  "filename": "mkraftman-google-tv-keyboard.js",
+  "homeassistant": "2024.1.0"
+}
