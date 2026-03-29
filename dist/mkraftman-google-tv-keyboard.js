@@ -239,19 +239,12 @@ class MkraftmanGoogleTVKeyboard extends HTMLElement {
     this._updateTextDisplay("");
     this._el.hiddenInput.style.pointerEvents = "auto";
     this._el.hiddenInput.focus();
-    // Dismiss on-screen keyboard (text: commands don't work while it's showing),
-    // then clear any existing text on the Google TV
+    // Clear any existing text on the Google TV
     this._hass.callService("remote", "send_command", {
       entity_id: this._config.entity,
-      command: "BACK",
+      command: Array(20).fill("DEL"),
+      delay_secs: 0,
     });
-    setTimeout(() => {
-      this._hass.callService("remote", "send_command", {
-        entity_id: this._config.entity,
-        command: Array(20).fill("DEL"),
-        delay_secs: 0,
-      });
-    }, 300);
     // Scroll the card into view above the keyboard, then save that position
     setTimeout(() => {
       this.scrollIntoView({ behavior: "smooth", block: "end" });
